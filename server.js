@@ -1,7 +1,5 @@
 import express from "express";
-import conectarAoBanco from "./src/config/dbConfig.js";
-
-const conexao = await conectarAoBanco(process.env.STRING_CONEXAO);
+import routes from "./src/routes/postRoutes.js";
 
 const posts = [
     {
@@ -27,7 +25,7 @@ const posts = [
 ]
 
 const app = express();
-app.use(express.json());
+routes(app)
 
 //Iniciando servidor
 app.listen("3000", () => {
@@ -35,11 +33,6 @@ app.listen("3000", () => {
 });
 
 
-async function getTodosPosts() {
-    const db = conexao.db("imersao-instabytes");
-    const colecao = db.collection("posts");
-    return colecao.find().toArray()
-}
 
 
 
