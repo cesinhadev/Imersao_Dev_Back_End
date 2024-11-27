@@ -11,14 +11,13 @@ import gerarDescricaoComGemini from "../services/geminiService.js";
 
 // Define uma função assíncrona para listar todos os posts.
 export async function listarPosts(req, res) {
-  /* Chama a função `getTodosPosts` para obter todos os posts do banco de dados.
-    A palavra-chave `await` indica que a função `listarPosts` aguardará a conclusão
-    da chamada `getTodosPosts` antes de continuar.*/
+  /* Chama a função para buscar os posts*/
   const result = await getTodosPosts();
 
   /* Envia uma resposta HTTP com status 200 (sucesso) e o resultado da consulta
     no formato JSON.*/
   res.status(200).json(result);
+  console.log("Listado com sucesso !!!")
 }
 
 // Define uma função assíncrona para criar um novo post.
@@ -35,6 +34,7 @@ export async function criarNovoPost(req, res) {
 
     // Envia uma resposta HTTP com status 200 (sucesso) e o post criado.
     res.status(200).json(postCriado);
+    console.log("Criado com sucesso !!!");
 
     // Se ocorrer algum erro durante a criação do post, este bloco será executado.
   } catch (erro) {
@@ -64,6 +64,7 @@ export async function uploadImage(req, res) {
 
     // Envia uma resposta HTTP com status 200 (sucesso) e o post criado.
     res.status(200).json(postCriado);
+    console.log("Atualizado com sucesso !!!")
   } catch (erro) {
     // Imprime uma mensagem de erro mais detalhada no console.
     console.error(erro.message);
